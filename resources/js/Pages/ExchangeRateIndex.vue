@@ -8,7 +8,8 @@
         <div class="mt-5 max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="py-4 px-8 sm:px-6 lg:px-6 bg-white overflow-hidden shadow-md sm:rounded-lg overflow-x-auto">
                 <p class="text-center text-gray-600">
-                    Stay up-to-date with the latest exchange rates for different currencies. Explore the current rates and compare them across various currencies.
+                    Stay up-to-date with the latest exchange rates for different currencies. Explore the current rates
+                    and compare them across various currencies.
                 </p>
             </div>
         </div>
@@ -22,6 +23,7 @@
                         <tr class="text-left font-medium">
                             <th class="pb-4 pt-6 px-6">Currency</th>
                             <th class="pb-4 pt-6 px-6">Exchange Rate</th>
+                            <th class="pb-4 pt-6 px-6">Updated At</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -34,8 +36,13 @@
                             </td>
                             <td class="border-t">
                   <span class="flex items-center px-6 py-4">
-                    {{ formatMoney(rate.rate) }}
+                    {{ formatMoney(rate.rate) }} EUR
                   </span>
+                            </td>
+                            <td class="border-t">
+                                <span class="flex items-center px-6 py-4">
+                     {{ formatDate(rate.updated_at) }}
+                    </span>
                             </td>
                         </tr>
                         </tbody>
@@ -48,13 +55,10 @@
 
 <script setup>
 import AppLayout from '@/Layouts/AppLayout.vue';
-import { Link } from '@inertiajs/inertia-vue3';
-import { formatMoney } from "@/helpers";
-import PrimaryButton from "@/Components/PrimaryButton.vue";
-import TextInput from "../Components/TextInput.vue";
-import { reactive } from "vue";
-import { Inertia } from "@inertiajs/inertia";
-import InputError from "../Components/InputError.vue";
+import {formatMoney} from "@/helpers";
+import {reactive} from "vue";
+import moment from 'moment';
+
 
 const props = defineProps({
     exchangeRates: Array,
@@ -64,6 +68,8 @@ const searchForm = reactive({
     search: '',
     error: '',
 });
-
+const formatDate = (date) => {
+    return moment(date).format('YYYY-MM-DD HH:mm:ss');
+};
 
 </script>

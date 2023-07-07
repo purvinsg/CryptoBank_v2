@@ -70,7 +70,7 @@ class AccountController extends Controller
     public function update(Request $request, Account $account): RedirectResponse
     {
         $validated = $request->validate([
-            'name' => 'required|string|max:20',
+            'name' => 'required|string|max:30',
         ]);
 
         $account->update($validated);
