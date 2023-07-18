@@ -4,3 +4,4 @@ Created using Laravel PHP + Vue front end using Inertia.
 
 
 To run this project, please install all required dependencies and update .ENV file!
+![Screen Recording](/cryptobank.gif)
